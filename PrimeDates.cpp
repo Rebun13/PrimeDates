@@ -8,9 +8,9 @@ int month[15];
 
 void updateLeapYear(int year) {
     if(year % 400 == 0) {
-        month[2] = 28;
-    } else if(year % 100 == 0) {
         month[2] = 29;
+    } else if(year % 100 == 0) {
+        month[2] = 28;
     } else if(year % 4 == 0) {
         month[2] = 29;
     } else {
@@ -48,14 +48,14 @@ int findLuckyDates(int d1, int m1, int y1, int d2, int m2, int y2) {
         if(d1 == d2 && m1 == m2 && y1 == y2) {
             break;
         }
+        updateLeapYear(y1);
         d1 = d1 + 1;
         if(d1 > month[m1]) {
             m1 = m1 + 1;
             d1 = 1;
             if(m1 > 12) {
-                y1 =  y1 + 1;
+                y1 = y1 + 1;
                 m1 = 1;
-                updateLeapYear(y1);
             }
         }
     }
